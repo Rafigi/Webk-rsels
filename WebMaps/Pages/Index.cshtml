@@ -1,0 +1,126 @@
+﻿@page 
+@model TableModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form method="post">
+        <div class="col-lg-8">
+            <table class="table table-striped table-hover table-bordered">
+                <tr>
+                    <th></th>
+                    <th>Dato</th>
+                    <th>Start Adresse</th>
+                    <th>Slut Adresse</th>
+                    <th>Formål</th>
+                    <th>Tur/Retur</th>
+                    <th>Gentagelser</th>
+                    <th>KM</th>
+                </tr>
+                @foreach (var Data in WebMaps.Models.BrugerInformationer.KørselListe)
+                {
+                    <tr>
+                        <td>
+                            <button asp-page-handler="Delete" class="btn btn-danger">Slet</button>
+                            <input type="hidden" name="id" value="@Data.IDkørsel" />
+                        </td>
+                        <td>@Data.Dato.Value.ToShortDateString()</td>
+                        <td>@Data.StartAdresse </td>
+                        <td>@Data.SlutAdresse</td>
+                        <td>@Data.Formål</td>
+                        <td>@Data.TurRetur</td>
+                        <td>@Data.Gentagelser</td>
+                        <td>@Data.KM</td>
+                    </tr>
+                }
+                
+            </table>
+        </div>
+
+        <div class="container">
+            <br />
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Dato:</label>
+                    <div class="col-sm-2 ">
+                        <input class="form-control" asp-for="Kørsel.Dato">
+                        <span class="alert-danger" asp-validation-for="Kørsel.Dato"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Start Adresse:</label>
+                    <div class="col-sm-2">
+                        <input id="startAdresse" class="form-control" asp-for="Kørsel.StartAdresse">
+                        <span class="alert-danger" asp-validation-for="Kørsel.StartAdresse"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Slut Adresse:</label>
+                    <div class="col-sm-2">
+                        <input id="slutAdresse" class="form-control" asp-for="Kørsel.SlutAdresse">
+                        <span class="alert-danger" asp-validation-for="Kørsel.SlutAdresse"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Formål:</label>
+                    <div class="col-sm-4">
+                        <select asp-for="Kørsel.Formål">
+                            <option disabled selected> -- Vælg et formål -- </option>
+                            <option value="Kamp">Kamp</option>
+                            <option value="Træningskamp">Træningskamp</option>
+                            <option value="Møde">Møde</option>
+                            <option value="Træning">Træning</option>
+                        </select>
+                    </div>
+                </div>
+                <span class="col-lg-offset-1 alert-danger" asp-validation-for="Kørsel.Formål"></span>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Tur/Retur</label>
+                    <div class="col-sm-4">
+                        <select asp-for="Kørsel.TurRetur">
+                            <option disabled selected> -- Ja eller Nej -- </option>
+                            <option value="Ja">Ja</option>
+                            <option value="Nej">Nej</option>
+                        </select>
+                    </div>
+
+                </div> <span class=" col-lg-offset-1 alert-danger" asp-validation-for="Kørsel.TurRetur"></span>
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Gentagelser:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control" asp-for="Kørsel.Gentagelser">
+                        <span class="alert-danger" asp-validation-for="Kørsel.Gentagelser"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <button asp-page-handler="InsertToTabel" class="btn btn-success">Overfør til table</button>
+                        @if (WebMaps.Models.BrugerInformationer.KørselListe.Count != 0)
+                        {
+                            <button asp-page="/Send" class="btn btn-default">Færdig</button>
+                        }
+                        else
+                        {
+                            <button disabled asp-page="/Send" class="btn btn-default">Færdig</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
+
+

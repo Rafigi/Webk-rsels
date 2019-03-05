@@ -1,0 +1,48 @@
+﻿
+body {
+    background-image: url("../images/RaklevLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15em;
+    background-position-y: 1em;
+    background-position-x: right;
+}
+
+.Box1 {
+    border-style: solid;
+    border-color: black;
+    width: 50em;
+    height: 15em;
+}
+
+.BoxOne {
+    border-style: none;
+    width: 22em;
+    height: 10em;
+    float: left;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+
+    .BoxOne p input {
+        position: absolute;
+        margin-left: 7em;
+    }
+
+    .BoxOne p label {
+        position: absolute;
+    }
+
+.table {
+    margin-left: 2em;
+    width: 45em;
+}
+
+    .table th {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }

@@ -1,0 +1,105 @@
+﻿body {
+    background-image: url("../images/RaklevLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15em;
+    background-position-y: 5em;
+    background-position-x: left;
+}
+.Box1 {
+    border-style: solid;
+    border-color: black;
+    width: 50em;
+    height: 15em;
+}
+
+.BoxOne {
+    border-style: none;
+    width: 22em;
+    height: 10em;
+    float: left;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+        .BoxOne p input {
+            position: absolute;
+            margin-left: 7em;
+        }
+
+        .BoxOne p label {
+            position: absolute;
+        }
+
+        .BoxOne p select {
+            position: absolute;
+            margin-left: 8em;
+        }
+
+p button {
+    margin-left: 16em;
+    width: 18em;
+    color: white;
+    background-color: gray;
+}
+
+.BoxTwo {
+    border-style: solid;
+    border-color: black;
+    border-width: 0.01em;
+    width: 80em;
+    height: 18em;
+    float: left;
+    margin-top:2em;
+    padding-top:1em;
+}
+
+    .BoxTwo p input {
+        position: absolute;
+        margin-left: 10em;
+    }
+
+    .BoxTwo p label {
+        margin-left: 1em;
+        position: absolute;
+    }
+
+    .BoxTwo p select {
+        margin-left: 10em;
+    }
+
+    .BoxTwo p button {
+        margin-top: 1em;
+        margin-left: 3em;
+        width: 20em;
+    }
+
+.table {
+    margin-top: 3em;
+    position: absolute;
+    margin-left: 30em;
+    width: 45em;
+}
+
+    .table th {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: center;
+        background-color: #141acb;
+        color: white;
+        
+    }
+
+    .table td
+    {
+        text-align:center;
+    }
+
+
+ section span{
+
+    position: fixed;
+    margin-left: 5em;
+
+}
+        

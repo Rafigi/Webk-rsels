@@ -1,0 +1,150 @@
+﻿@page
+@model Index1
+@section css {
+    <link href="@Url.Content("~/css/StyleMaps.css")" rel="stylesheet" />
+}
+<h1> Blanket for at oprette kørsels seddel.</h1>
+
+
+
+<form class="Box1" method="post">
+    <section class="BoxOne">
+        <p>
+            <label>Navn</label>
+            <input asp-for="Bruger.Navn">
+            @Html.ValidationMessage("Indtast venligst et navn");
+        </p>
+        <br />
+        <p>
+            <label>Adresse</label>
+            <input asp-for="Bruger.Adresse">
+
+        </p>
+        <br />
+        <p>
+            <label>Postnr/By</label>
+            <input asp-for="Bruger.PostBy">
+
+        </p>
+        <br />
+        <p>
+            <label>Afdeling</label>
+            <select asp-for="Bruger.Afdeling">
+                <option value="Gymnastik">Gymnastik</option>
+
+                <option value="Gymnastik">Gymnastik</option>
+                <option value="Fodbold">Fodbold</option>
+                <option value="Håndbold">Håndbold</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Bordtennis">Bordtennis</option>
+                <option value="Folkedans">Folkedans</option>
+            </select>
+        </p>
+    </section>
+    <section class="BoxOne">
+        <p>
+            <label>Mail</label>
+            <input asp-for="Bruger.Mail">
+        </p>
+        <br />
+        <p>
+            <label>Bank Regnr</label>
+            <input asp-for="Bruger.BankRegnr">
+
+        </p>
+        <br />
+        <p>
+            <label>Bank Kontonr</label>
+            <input asp-for="Bruger.BankKontoNr">
+
+        </p>
+    </section>
+    <section>
+        <span class="text-danger alert-danger" asp-validation-for="Bruger.Navn"> </span>
+        <br />
+        <span class="text-danger alert-danger"asp-validation-for="Bruger.Adresse"> </span>
+        <br />
+        <span class="text-danger alert-danger"asp-validation-for="Bruger.PostBy"> </span>
+        <br />
+        <span class="text-danger alert-danger" asp-validation-for="Bruger.Mail"></span>
+        <br />
+        <span class="text-danger alert-danger" asp-validation-for="Bruger.BankRegnr"> </span>
+        <br />
+        <span class="text-danger alert-danger" asp-validation-for="Bruger.BankKontoNr"> </span>
+        <br />
+    </section>
+
+
+    <p> <button asp-page-handler="SendTo">Send til Raklev</button></p>
+</form>
+
+
+
+<form class="Box2" method="post">
+    <section class="BoxTwo">
+        <p>
+            <label>Dato</label>
+            <input asp-for="Kørsel.Dato">
+        </p>
+        <br />
+        <p>
+            <label>Start Adresse</label>
+            <input asp-for="Kørsel.StartAdresse">
+        </p>
+        <br />
+        <p>
+            <label>Slut Adresse</label>
+            <input asp-for="Kørsel.SlutAdresse">
+        </p>
+        <br />
+        <p>
+            <label>Formål</label>
+            <select asp-for="Kørsel.Formål">
+                <option value="VælgVenligst">Vælg Venligst</option>
+                <option value="Kamp">Kamp</option>
+                <option value="Træningskamp">Træningskamp</option>
+                <option value="Møde">Møde</option>
+                <option value="Træning">Træning</option>
+            </select>
+        </p>
+        <p>
+            <label>Tur/Retur</label>
+            <select asp-for="Kørsel.TurRetur">
+                <option value="VælgVenligst">Vælg Venligst</option>
+                <option value="Ja">Ja</option>
+                <option value="Nej">Nej</option>
+            </select>
+        </p>
+        <p>
+            <label>Gentagelser</label>
+            <input asp-for="Kørsel.Gentagelser">
+        </p>
+        <br />
+        <p> <button asp-page-handler="InsertToTabel">Overfør til tabel</button></p>
+
+    </section>
+
+    <table class="table">
+        <tr>
+            <th>Dato</th>
+            <th>Start</th>
+            <th>Slut</th>
+            <th>Formål</th>
+            <th>t/r</th>
+            <th>stk</th>
+            <th>KM</th>
+        </tr>
+        @foreach (var information in Index1.KørselListe)
+        {
+            <tr>
+                <td>@information.Dato</td>
+                <td>@information.StartAdresse</td>
+                <td>@information.SlutAdresse</td>
+                <td>@information.Formål</td>
+                <td>@information.TurRetur</td>
+                <td>@information.Gentagelser</td>
+                <td>@information.KM</td>
+            </tr>
+        }
+    </table>
+</form>
