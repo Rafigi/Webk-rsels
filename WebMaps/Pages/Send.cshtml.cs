@@ -112,7 +112,7 @@ namespace WebMaps.Pages
             sb.Append(@"<tr>");
             #endregion
 
-            foreach (var item in WebMaps.Models.BrugerInformationer.KørselListe)
+            foreach (var item in WebMaps.Models.BrugerInformationer.KÃ¸rselListe)
             {
                 sb.Append(@"<tr>");
                 sb.Append(@"<td>");
@@ -160,10 +160,10 @@ namespace WebMaps.Pages
             doc.Save(pdfStream);
 
             pdfStream.Position = 0;
-            MailMessage mm = new MailMessage("mads849h@edu.eal.dk", "Mads@illemann.dk");
-            mm.Subject = "Kørsel PDF fra " + Bruger.Navn;
+            MailMessage mm = new MailMessage("", "");
+            mm.Subject = "KÃ¸rsel PDF fra " + Bruger.Navn;
             mm.Body = "Denne mail er sendt fra en hjemmesiden www.illemads.dk/map";
-            mm.Attachments.Add(new Attachment(pdfStream, "Kørselsseddel.pdf"));
+            mm.Attachments.Add(new Attachment(pdfStream, "KÃ¸rselsseddel.pdf"));
             mm.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
             smtp.UseDefaultCredentials = false;
@@ -172,8 +172,8 @@ namespace WebMaps.Pages
             smtp.Port = 587;
             NetworkCredential NetworkCred = new NetworkCredential();
             smtp.Credentials = NetworkCred;
-            NetworkCred.UserName = "mads849h@edu.eal.dk";
-            NetworkCred.Password = "Julemanden90";
+            NetworkCred.UserName = "";
+            NetworkCred.Password = "";
 
             await smtp.SendMailAsync(mm);
             doc.Close();
