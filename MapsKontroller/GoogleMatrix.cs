@@ -22,7 +22,7 @@ namespace MapsKontroller
 
         public void GetData()
         {
-            string key = "AIzaSyBM4dBYGewehvlFZyudquC5fQnPmxoblhc";
+            string key = "";
             WebClient client = new WebClient();
             string url = $"https://maps.googleapis.com/maps/api/distancematrix/json?origins={StartAdresse}&destinations={EndAdresse}&mode=Car&language=dk-DK&key={key}";
             string jsonRaw = client.DownloadString(url);
